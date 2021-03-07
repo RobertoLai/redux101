@@ -1,0 +1,54 @@
+body {
+  width: 600px;
+  padding: 10px;
+  margin: 10px auto;
+  border: 2p solid blue;
+}
+.todo {
+  width: 400px;
+  margin: 2px;
+}
+input[type="text"] {
+  width: 400px;
+  margin-top: 20px;
+}
+.btnDelete,
+.btnAdd {
+  margin: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 20px;
+  color: white;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.green {
+  border: 1px solid green;
+  border-color: green;
+  background-color: green;
+}
+.red {
+  border: 1px solid red;
+  background-color: red;
+  border-color: red;
+}
+
+h3 {
+  color: maroon;
+  margin-top: 3px;
+}
+#show-state {
+  margin-top: 50px;
+  border: 2px solid maroon;
+  border-radius: 5px;
+  width: 450px;
+  padding: 5px;
+}
+
+#main {
+  border: 2px solid maroon;
+  border-radius: 5px;
+  width: 450px;
+  padding: 5px;
+}
