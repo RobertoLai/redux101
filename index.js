@@ -33,5 +33,5 @@ function applyTodoAdd(state, payload) {
 }
 function applyTodoDelete(state, payload) {
   // filter is immutable
-  return state.filter(todo => todo.id != payload.id);
+  return state.filter(todo => todo.id !== payload.id);
 }
