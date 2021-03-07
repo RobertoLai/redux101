@@ -28,10 +28,10 @@ function reducer(state, action) {
 }
 
 function applyTodoAdd(state, payload) {
-  // concat is immutable
+  // NB: concat is immutable
   return state.concat(payload);
 }
 function applyTodoDelete(state, payload) {
-  // filter is immutable
+  // NB: filter is immutable
   return state.filter(todo => todo.id !== payload.id);
 }
