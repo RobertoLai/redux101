@@ -1,6 +1,7 @@
 // REDUX code
 let todo_id = 0;
-const store = Redux.createStore(reducer, (state = []));
+const initialState = [{ todos: [], users: [], courses: [] }];
+const store = Redux.createStore(reducer, (state = initialState));
 const unsubscribe = store.subscribe(() => render(store.getState()));
 
 store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "learn Angular" } });
@@ -27,11 +28,17 @@ function reducer(state, action) {
 
 function applyTodoAdd(state, payload) {
   // NB: concat is immutable
-  return state.concat(payload);
+  const newState = [{ todos: state[0].todos.concat(payload), users: state[0].users, courses: state[0].courses }];
+  return newState;
+  //return state.concat(payload);
 }
 function applyTodoDelete(state, payload) {
   // NB: filter is immutable
-  return state.filter(todo => todo.id !== payload.id);
+  const newState = [
+    { todos: state[0].todos.filter(todo => todo.id !== payload.id), users: state[0].users, courses: state[0].courses }
+  ];
+  return newState;
+  // return state.filter(todo => todo.id !== payload.id);
 }
 
 // simple todo id creator
@@ -42,7 +49,8 @@ function newIndex() {
 
 // WEB Interface code
 function render(state) {
-  const stateToHTML = state
+  const todos = state[0].todos;
+  const stateToHTML = todos
     .map(
       todo =>
         `<input class='btnDelete red' type='button' onclick='deleteTodo(${todo.id})' value='-'>
@@ -54,7 +62,15 @@ function render(state) {
   todosHTML.innerHTML = stateToHTML;
 
   const stateHTML = document.getElementById("state");
-  stateHTML.innerHTML = state.map(todo => JSON.stringify(todo)).join("<br>");
+  stateHTML.innerHTML = JSON.stringify(state[0], null, 2);
+  // stateHTML.innerHTML =
+  //   '{<br>"todos":&nbsp;[<br>&nbsp;&nbsp;' +
+  //   state[0].todos.map(todo => JSON.stringify(todo)).join(",<br>&nbsp;&nbsp;&nbsp;") +
+  //   '<br>],<br>users":[' +
+  //   state[0].users.map(todo => JSON.stringify(todo)).join("<br>") +
+  //   '], "<br>courses":[' +
+  //   state[0].courses.map(todo => JSON.stringify(todo)).join("<br>") +
+  //   "]<br>}";
 }
 function deleteTodo(id) {
   const action = { type: "todos/delete", payload: { id: id } };
