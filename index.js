@@ -63,14 +63,6 @@ function render(state) {
 
   const stateHTML = document.getElementById("state");
   stateHTML.innerHTML = JSON.stringify(state[0], null, 2);
-  // stateHTML.innerHTML =
-  //   '{<br>"todos":&nbsp;[<br>&nbsp;&nbsp;' +
-  //   state[0].todos.map(todo => JSON.stringify(todo)).join(",<br>&nbsp;&nbsp;&nbsp;") +
-  //   '<br>],<br>users":[' +
-  //   state[0].users.map(todo => JSON.stringify(todo)).join("<br>") +
-  //   '], "<br>courses":[' +
-  //   state[0].courses.map(todo => JSON.stringify(todo)).join("<br>") +
-  //   "]<br>}";
 }
 function deleteTodo(id) {
   const action = { type: "todos/delete", payload: { id: id } };
