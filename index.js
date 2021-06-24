@@ -1,13 +1,16 @@
 // REDUX code
 let todo_id = 0;
+// simple id creator
+const id = () => (todo_id = todo_id + 1);
+
 const store = Redux.createStore(reducer, (state = []));
 const unsubscribe = store.subscribe(() => render(store.getState()));
 
-store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "learn Angular" } });
-store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "learn Kubernetes" } });
-store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "learn Russian" } });
-store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "learn Haskell" } });
-store.dispatch({ type: "todos/add", payload: { id: newIndex(), name: "single swing 40Kg kettlebells" } });
+store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Angular" } });
+store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Kubernetes" } });
+store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Russian" } });
+store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Haskell" } });
+store.dispatch({ type: "todos/add", payload: { id: id(), name: "single swing 40Kg kettlebells" } });
 
 // unsubscribe()
 
@@ -34,12 +37,6 @@ function applyTodoDelete(state, payload) {
   return state.filter(todo => todo.id !== payload.id);
 }
 
-// simple todo id creator
-function newIndex() {
-  todo_id = todo_id + 1;
-  return todo_id;
-}
-
 // WEB Interface code
 function render(state) {
   const stateToHTML = state
@@ -57,12 +54,12 @@ function render(state) {
   stateHTML.innerHTML = state.map(todo => JSON.stringify(todo)).join("<br>");
 }
 function deleteTodo(id) {
-  const action = { type: "todos/delete", payload: { id: id } };
+  const action = { type: "todos/delete", payload: { id } };
   store.dispatch(action);
 }
 function addTodo() {
   const todo = document.getElementById("mytodo").value;
   document.getElementById("mytodo").value = "";
-  const action = { type: "todos/add", payload: { id: newIndex(), name: todo } };
+  const action = { type: "todos/add", payload: { id: id(), name: todo } };
   store.dispatch(action);
 }
