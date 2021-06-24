@@ -1,16 +1,16 @@
 // REDUX code
-let todo_id = 0;
+let id = 0;
 // simple id creator
-const id = () => (todo_id = todo_id + 1);
+const getId = () => (id = id + 1);
 
 const store = Redux.createStore(reducer, (state = []));
 const unsubscribe = store.subscribe(() => render(store.getState()));
 
-store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Angular" } });
-store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Kubernetes" } });
-store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Russian" } });
-store.dispatch({ type: "todos/add", payload: { id: id(), name: "learn Haskell" } });
-store.dispatch({ type: "todos/add", payload: { id: id(), name: "single swing 40Kg kettlebells" } });
+store.dispatch({ type: "todos/add", payload: { id: getId(), name: "learn Angular" } });
+store.dispatch({ type: "todos/add", payload: { id: getId(), name: "learn Kubernetes" } });
+store.dispatch({ type: "todos/add", payload: { id: getId(), name: "learn Russian" } });
+store.dispatch({ type: "todos/add", payload: { id: getId(), name: "learn Haskell" } });
+store.dispatch({ type: "todos/add", payload: { id: getId(), name: "single swing 40Kg kettlebells" } });
 
 // unsubscribe()
 
@@ -60,6 +60,6 @@ function deleteTodo(id) {
 function addTodo() {
   const todo = document.getElementById("mytodo").value;
   document.getElementById("mytodo").value = "";
-  const action = { type: "todos/add", payload: { id: id(), name: todo } };
+  const action = { type: "todos/add", payload: { id: getId(), name: todo } };
   store.dispatch(action);
 }
