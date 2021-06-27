@@ -3,6 +3,7 @@ body {
   padding: 10px;
   margin: 10px auto;
   border: 2p solid blue;
+  background: lightgray;
 }
 .todo {
   width: 400px;
@@ -51,4 +52,15 @@ h3 {
   border-radius: 5px;
   width: 450px;
   padding: 5px;
+}
+
+#show-state {
+  height: 150px;
+  background: black;
+  border: 2px solid lightgreen;
+  color: lightgreen;
+}
+
+#show-state h4 {
+  color: red;
 }
