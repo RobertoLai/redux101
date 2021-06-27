@@ -35,6 +35,7 @@ input[type="text"] {
   border-color: red;
 }
 
+h2,
 h3 {
   color: maroon;
   margin-top: 3px;
@@ -55,10 +56,11 @@ h3 {
 }
 
 #show-state {
-  height: 150px;
+  border: black;
   background: black;
-  border: 2px solid lightgreen;
   color: lightgreen;
+  font-weight: normal;
+  font-size: 0.9em;
 }
 
 #show-state h4 {
